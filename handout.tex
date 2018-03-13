@@ -19,18 +19,18 @@
 \newcommand{\pb}{\mathbb{P}}
 \newcommand{\E}{\ensuremath{\mbox{E}}}
 % Page style definition
-\geometry{margin=0.75in}
+\geometry{margin=0.55in, top=0.75in, bottom=0.75in}
 \pagestyle{fancy}
 % Customize this to your liking.
 \setlength{\headheight}{14.5pt}
-\lhead{University of Wisconsin - Madison, Visit Day, 2018}\chead{}\rhead{Jacob M. Maronge}\lfoot{Website: https://jmmaronge.github.io}
-\cfoot{}\rfoot{Email: jmmaronge@gmail.com}
+\lhead{University of Wisconsin - Madison, BMI Visit Day, 2018}\chead{}\rhead{Jacob M. Maronge}\lfoot{https://jmmaronge.github.io}
+\cfoot{}\rfoot{jmmaronge@gmail.com}
 \usepackage{titlesec}
 
 
 \definecolor{uwred}{RGB}{197, 5, 12}
 
-\titlespacing{\subsection}{0pt}{0pt}{0pt}
+\titlespacing{\subsection}{0pt}{5pt}{5pt}
 
 
 \begin{document}
@@ -38,40 +38,39 @@
 \begin{multicols}{2} 
 
 \subsection*{Introduction}
-My name is Jacob Maronge. I am a 2nd year PhD Student in the Department of Statistics and Department of Biostatistics and Medical Informatics working with Professor Paul J. Rathouz. Generally, my research interests lie in the areas of experimental design and longitudinal or clustered data, including under situations with biased sampling schemes, such as outcome dependent sampling. Current areas of application include communication sciences and language and speech development. Below I highlight a couple of the projects I am working on here at UW, one of an applied nature and one that is more methodological. If you have any questions about our program after your visit, please reach out to me at jmmaronge@gmail.com.
+My name is Jacob Maronge. I am a 2nd year PhD Student in the Department of Statistics and Department of Biostatistics and Medical Informatics working with Professor Paul J. Rathouz. Generally, my research interests lie in the areas of experimental design and longitudinal or clustered data, including under situations with biased sampling schemes, such as outcome dependent sampling. Below I highlight a couple of the projects I am working on here at UW, one of an applied nature and one that is more methodological.
 
 \subsection*{Analysis of Speech Trajectories in Children with Cerebral Palsy}
 
-Paul and I collaborate with Professor Katie Hustad and her lab here at UW. A main project in Katie's lab involves following a longitudinal cohort of young children with Cerebral Palsy (CP) into adulthood while monitoring speech development compared to normally developing children. In some children, CP also affects their speech capabilities. We would like to be able to use the 38 children in this cohort to reach the following goals:
+Paul and I collaborate with Professor Katie Hustad and her lab here at UW. A main project in Katie's lab involves following a longitudinal cohort of young children with Cerebral Palsy (CP) into adulthood while monitoring speech development compared to normally developing children. In some children, CP also affects their speech capabilities. 
+\begin{center}\vspace{.25cm}
+\includegraphics[width=1\linewidth]{fitted_plots_for_speech_analysis_speech_for_handout.pdf}
+\captionof{figure}{Each subject, color coded by group, for each outcome.}
+\label{fig:cp}
+\end{center}\vspace{.25cm}
+\hspace{.5cm}Clinicians categorize these children into 3 categories based off of speech abilities. One of our goals was to see if the data-driven methods regarding analysis of speech patterns collected on 35 children in the cohort suggested existence of these clinical categories.  Figure \ref{fig:cp} shows the subject level data for 4 speech variables of interest with the fitted values from a multivariate longitudinal model overlaid for each group.
+
+
+
+\subsection*{Power Analysis for Longitudinal Data Using Decomposition}
+Power analysis and sample size calculations are a crucial component of any study design. However, many study designs lead to either complicated formulas or do not have closed form solutions. We propose a method for calculating power in the situation of clustered or longitudinal data that leads to a solution that is both simple to calculate and gives valuable insight to how study design parameters affect power.
 \begin{center}\vspace{.5cm}
-\includegraphics[width=1\linewidth]{spaghetti_plots_for_speech_analysis.pdf}
-\captionof{figure}{From left to right: DWI, FLAIR, T1w, and T2w images for Subject 05, 2015 ISLES Challenge}
+\includegraphics[width=1\linewidth]{gamma_analysis.pdf}
+\captionof{figure}{Parameter $\gamma$ for different study design parameters, $\tau_\epsilon, \tau_x$, and $n$.}
+\label{fig:gamma}
 \end{center}\vspace{.5cm}
+\hspace{.5cm}We consider the situation where covariates are randomly observed. Our model of interest is,
+\begin{equation} \label{eq:model}
+Y_{i,j}=\beta_0+ \beta X_{i,j}+ \epsilon_{i,j},
+\end{equation}
+where $i=1,\ldots, m$ denotes the study participant and $j=1,\ldots,n$ denotes the number of measurements within subject. We expect measurements within subject to be positively correlated. Therefore, we assume, corr$(X_{i,j},X_{i,j'}) = \tau_X >0$ and corr$(\epsilon_{i,j},\epsilon_{i,j'}) = \tau_\epsilon>0$. We assume the $X_{i,j}$ and $\epsilon_{i,j}$ terms have variance $\sigma^2_X$ and $\sigma^2_\epsilon$, which we set both equal to 1, without loss of generality.
+Using an approach which decomposes covariates into pieces which vary within-subject and between-subject, we are able to solve for the correlation between $X_{i,j}$ and $Y_{i,j}$ which has two parts, one part is the correlation between $X_{i,j}$ and $Y_{i,j}$ without accounting for the correlation within subjects, and andother part $\gamma$, is a function of study design parameters. This equation is shown below, 
+\begin{equation} \label{eq:rhoeff}
+\rho^2_{\mbox{eff}} =\frac{\rho^2\gamma}{\rho^2\gamma+(1-\rho^2)}.
+\end{equation}
+\noindent Figure \ref{fig:gamma} shows how $\gamma$ varies as different study design parameters change.
 
-
-
-
-
-
-
-
-\subsection*{Introduction}
-My name is Jacob Maronge. I am a 2nd year PhD Student in the Department of Statistics and Department of Biostatistics and Medical Informatics working with Professor Paul J. Rathouz. Generally my research interests lie in the areas of experimental design and longitudinal or clustered data, including under situations with biased sampling schemes, such as outcome dependent sampling. Current areas of application include communication sciences and language and speech development. In past, I have worked on non-parametric regression methods and on the analysis of brain imaging data. Below I highlight a couple of the projects I am working on here at UW - Madison, one of an applied nature and one that is more methodological. If you have any questions please reach out to me at jmmaronge@gmail.com.
-\subsection*{Introduction}
-My name is Jacob Maronge. I am a 2nd year PhD Student in the Department of Statistics and Department of Biostatistics and Medical Informatics working with Professor Paul J. Rathouz. Generally my research interests lie in the areas of experimental design and longitudinal or clustered data, including under situations with biased sampling schemes, such as outcome dependent sampling. Current areas of application include communication sciences and language and speech development. In past, I have worked on non-parametric regression methods and on the analysis of brain imaging data. Below I highlight a couple of the projects I am working on here at UW - Madison, one of an applied nature and one that is more methodological. If you have any questions please reach out to me at jmmaronge@gmail.com.
-\subsection*{Introduction}
-My name is Jacob Maronge. I am a 2nd year PhD Student in the Department of Statistics and Department of Biostatistics and Medical Informatics working with Professor Paul J. Rathouz. Generally my research interests lie in the areas of experimental design and longitudinal or clustered data, including under situations with biased sampling schemes, such as outcome dependent sampling. Current areas of application include communication sciences and language and speech development. In past, I have worked on non-parametric regression methods and on the analysis of brain imaging data. Below I highlight a couple of the projects I am working on here at UW - Madison, one of an applied nature and one that is more methodological. If you have any questions please reach out to me at jmmaronge@gmail.com.
-\subsection*{Introduction}
-My name is Jacob Maronge. I am a 2nd year PhD Student in the Department of Statistics and Department of Biostatistics and Medical Informatics working with Professor Paul J. Rathouz. Generally my research interests lie in the areas of experimental design and longitudinal or clustered data, including under situations with biased sampling schemes, such as outcome dependent sampling. Current areas of application include communication sciences and language and speech development. In past, I have worked on non-parametric regression methods and on the analysis of brain imaging data. Below I highlight a couple of the projects I am working on here at UW - Madison, one of an applied nature and one that is more methodological. If you have any questions please reach out to me at jmmaronge@gmail.com.
-\subsection*{Introduction}
-My name is Jacob Maronge. I am a 2nd year PhD Student in the Department of Statistics and Department of Biostatistics and Medical Informatics working with Professor Paul J. Rathouz. Generally my research interests lie in the areas of experimental design and longitudinal or clustered data, including under situations with biased sampling schemes, such as outcome dependent sampling. Current areas of application include communication sciences and language and speech development. In past, I have worked on non-parametric regression methods and on the analysis of brain imaging data. Below I highlight a couple of the projects I am working on here at UW - Madison, one of an applied nature and one that is more methodological. If you have any questions please reach out to me at jmmaronge@gmail.com.
-\subsection*{Introduction}
-My name is Jacob Maronge. I am a 2nd year PhD Student in the Department of Statistics and Department of Biostatistics and Medical Informatics working with Professor Paul J. Rathouz. Generally my research interests lie in the areas of experimental design and longitudinal or clustered data, including under situations with biased sampling schemes, such as outcome dependent sampling. Current areas of application include communication sciences and language and speech development. In past, I have worked on non-parametric regression methods and on the analysis of brain imaging data. Below I highlight a couple of the projects I am working on here at UW - Madison, one of an applied nature and one that is more methodological. If you have any questions please reach out to me at jmmaronge@gmail.com.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%    Main Text  %%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
+\subsection*{Conclusions}
+I hope this handout serves to show as an example of some of the work you can look forward to at UW-Madison. If you have any additional questions after your visit, please reach out to me at jmmaronge@gmail.com.
 \end{multicols}
 \end{document}
