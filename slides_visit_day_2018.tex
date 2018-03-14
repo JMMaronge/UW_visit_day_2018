@@ -1,0 +1,191 @@
+
+\documentclass[12pt,t]{beamer}
+\usepackage{graphicx}
+\usepackage{fontawesome}
+\setbeameroption{hide notes}
+\setbeamertemplate{note page}[plain]
+\graphicspath{{figures/}} % Location of the graphics files
+
+
+\usepackage{helvet}
+
+\usetheme{default}
+\beamertemplatenavigationsymbolsempty
+
+\definecolor{foreground}{RGB}{73,73,73}
+\definecolor{background}{RGB}{247,247,247}
+\definecolor{uwred}{RGB}{197, 5, 12}
+\definecolor{title}{RGB}{197, 5, 12}
+\definecolor{gray}{RGB}{155,155,155}
+\definecolor{jhblue}{RGB}{0,38,73}
+
+\definecolor{subtitle}{RGB}{40,70,75}
+\definecolor{hilight}{RGB}{102,255,204}
+\definecolor{vhilight}{RGB}{255,111,207}
+
+\setbeamercolor{titlelike}{fg=title}
+\setbeamercolor{subtitle}{fg=subtitle}
+\setbeamercolor{institute}{fg=foreground}
+\setbeamercolor{normal text}{fg=foreground,bg=background}
+
+\setbeamercolor{item}{fg=foreground} % color of bullets
+\setbeamercolor{subitem}{fg=gray}
+\setbeamercolor{itemize/enumerate subbody}{fg=gray}
+\setbeamertemplate{itemize subitem}{{\textendash}}
+\setbeamerfont{itemize/enumerate subbody}{size=\footnotesize}
+\setbeamerfont{itemize/enumerate subitem}{size=\footnotesize}
+
+\setbeamertemplate{footline}{%
+    \raisebox{5pt}{\makebox[\paperwidth]{\hfill\makebox[20pt]{\color{gray}
+          \scriptsize\insertframenumber}}}\hspace*{5pt}}
+
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+\newcommand{\ig}{\includegraphics}
+\newcommand{\subt}[1]{{\footnotesize \color{subtitle} {#1}}}
+
+{
+\setbeamertemplate{footline}{} % no page number here
+\fontfamily{cmss}\selectfont
+\title{	UW-Madison Visit Day, 2018}
+\subtitle{Department of Biostatistics and Medical Informatics}
+\author{\href{https://jmmaronge.github.io/}{Jacob M. Maronge}}
+\institute{\href{https://www.stat.wisc.edu/}{Department of Statistics \\ Department of Biostatistics and Medical Informatics} \\[4pt] \href{http://www.wisc.edu}{University of Wisconsin{\textendash}Madison}}
+\date{\href{https://jmmaronge.github.io/}{\tt \scriptsize https://jmmaronge.github.io/}
+\\[-4pt]
+\href{https://github.com/jmmaronge}{\tt \scriptsize \faGithub \ jmmaronge}
+\\[-4pt]
+\href{https://twitter.com/jmmaronge}{\tt \scriptsize \faTwitter \ @jmmaronge}
+}
+
+
+\begin{document}
+
+{
+\setbeamertemplate{footline}{} % no page number here
+\frame{
+  \titlepage
+  
+}
+}
+%% normal frame
+\begin{frame}{Introduction}
+\subt{About me}
+ 
+\bigskip
+\begin{itemize}
+\item 2nd year PhD student in statistics and biostatistics
+\item Working with Professor Paul Rathouz
+\item  Research interests: clinical biostatistics, experimental design and longitudinal or clustered data, including biased sampling schemes
+\end{itemize}
+
+
+\end{frame}
+
+\begin{frame}{Goals}
+\subt{Why am I here?}
+ 
+\bigskip
+
+I'd like to offer an example of some of the interesting work, \textbf{from a student prospective}, that you can be a part of here at UW.
+\bigskip
+
+Two Examples:
+\begin{itemize}
+\item Analysis of Speech Trajectories in Children with Cerebral Palsy (CP)
+\item Power Analysis for Longitudinal Data Using Decomposition
+\end{itemize}
+
+
+\end{frame}
+
+\begin{frame}{Analysis of Speech Trajectories}
+\subt{in children with CP}
+\bigskip
+
+\begin{itemize}
+\item Collaborators: Wisconsin Intelligibility, Speech, and Communication Laboratory (WISC Lab, PI: Professor Katie Hustad)
+\item CP is an umbrella term for a group of permanent movement disorders, which can also affect speech
+\item Clinicians categorize these children into 3 categories based off of speech abilities. 
+\end{itemize}
+
+\textbf{\color{uwred}Question:} Do data-driven methods regarding analysis of speech patterns collected on 35 children in the cohort suggested existence of these clinical categories? 
+
+\end{frame}
+
+\begin{frame}{Analysis of Speech Trajectories}
+\begin{center}
+\setlength{\fboxsep}{0pt}%
+\setlength{\fboxrule}{1pt}%
+\fcolorbox{subtitle}{background}{\ig[width=0.6\textwidth]{fitted_plots_for_speech_analysis_speech_for_handout.pdf}}
+\end{center}
+Subject level data for 4 speech variables with group level fitted values from a multivariate longitudinal model
+
+\end{frame}
+
+\begin{frame}{Power Analysis for Longitudinal Data}
+\subt{Using Decomposition}
+\bigskip
+
+\begin{itemize}
+\item Power analysis and sample size calculations are a crucial component of any study design.
+\item Many study designs lead to either complicated formulas or do not have closed form solutions
+\item We propose a method for calculating power in the situation of clustered or longitudinal data that leads to a solution that is both simple to calculate and gives valuable insight to how study design parameters affect power.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Setup}
+\subt{Model}
+\bigskip
+
+Consider the situation where predictors are randomly observed. Our model of interest is,
+\begin{equation} \label{eq:model}
+Y_{ij}=\beta_0+ \beta X_{ij}+ \epsilon_{ij},
+\end{equation}
+where $i=1,\ldots, m$ denotes the study participant and $j=1,\ldots,n$ denotes measurements within subject.
+\begin{itemize}
+\item corr$(X_{ij},X_{ij'}) = \tau_X >0$
+\item corr$(\epsilon_{ij},\epsilon_{ij'}) = \tau_\epsilon>0$
+\item $\mbox{Var}(X_{ij})=\mbox{Var}(\epsilon_{ij}) = 1$
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Decomposition}
+\subt{Results}
+\bigskip
+
+By decomposing the model into pieces which vary within-subject and between-subject, we are able to derive the correlation between $X_{ij}$ and $Y_{ij}$, 
+\begin{equation} \label{eq:rhoeff}
+\rho^2_{\mbox{eff}} =\frac{\rho^2\gamma}{\rho^2\gamma+(1-\rho^2)}.
+\end{equation}
+Interesting pieces
+\begin{itemize}
+\item $\rho$ denotes the correlation as if there were no correlation within subject.
+\item $\gamma$ is a function of  $\tau_X,  \tau_\epsilon$, and $n$ (study design parameters).
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Power Analysis for Longitudinal Data}
+\begin{center}
+\setlength{\fboxsep}{0pt}%
+\setlength{\fboxrule}{1pt}%
+\fcolorbox{subtitle}{background}{\ig[width=0.6\textwidth]{gamma_analysis.pdf}}
+\end{center}
+Plot of how $\gamma$ varies as different study design parameters change
+\end{frame}
+
+\begin{frame}{Conclusions}
+\bigskip
+
+\begin{itemize}
+\item I hope this shows good examples of exciting work \textbf{you} could do at UW
+\item Please reach out to me with any questions after your visit
+\item Special thanks to Professor Karl Broman for the {\LaTeX} Template for these slides
+\end{itemize}
+\end{frame}
+
+
+
+\end{document}
