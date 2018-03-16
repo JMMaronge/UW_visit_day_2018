@@ -19,7 +19,7 @@
 \newcommand{\pb}{\mathbb{P}}
 \newcommand{\E}{\ensuremath{\mbox{E}}}
 % Page style definition
-\geometry{margin=0.40in, top=0.75in, bottom=0.75in}
+\geometry{margin=0.40in, top=0.75in, bottom=0.5in}
 \pagestyle{fancy}
 % Customize this to your liking.
 \setlength{\headheight}{14.5pt}
@@ -48,7 +48,7 @@ Paul and I collaborate with Professor Katie Hustad and her lab here at UW. A mai
 \captionof{figure}{Each subject, color coded by group, for each outcome.}
 \label{fig:cp}
 \end{center}\vspace{0cm}
-\hspace{.5cm}Clinicians categorize these children into 3 categories based off of speech abilities. One of our goals was to see if the data-driven methods regarding analysis of speech patterns collected on 35 children in the cohort suggested existence of these clinical categories.  Figure \ref{fig:cp} shows the subject level data for 4 speech variables of interest with the fitted values from a multivariate longitudinal model overlaid for each group.
+\hspace{.5cm}Clinicians categorize these children into 3 categories based off of speech ability. One of our goals was to see if the data-driven methods regarding analysis of speech patterns collected on 35 children in the cohort suggested existence of these clinical categories.  Figure \ref{fig:cp} shows the subject level data for 4 speech variables of interest with the fitted values from a multivariate longitudinal model overlaid for each group.
 
 
 \subsubsection*{Power Analysis for Longitudinal Data Using Decomposition}
@@ -62,11 +62,11 @@ Power analysis and sample size calculations are a crucial component of any study
 \begin{equation} \label{eq:model}
 Y_{i,j}=\beta_0+ \beta X_{i,j}+ \epsilon_{i,j},
 \end{equation}
-where $i=1,\ldots, m$ and $j=1,\ldots,n$ denote the denotes the study participant and observation within participant, respectively. We expect measurements within subject to be positively correlated. Therefore, corr$(X_{i,j},X_{i,j'}) = \tau_X >0$ and corr$(\epsilon_{i,j},\epsilon_{i,j'}) = \tau_\epsilon>0$. Finally, $\mbox{Var}(X_{i,j}) = \mbox{Var}(\epsilon_{i,j}) =1$, Using an approach which decomposes the covariates, we are able to come to a power formula with two parts, one part is the correlation between $X_{i,j}$ and $Y_{i,j}$ without accounting for the correlation within subjects, and another part $\gamma$, is a function of study design parameters. This equation is shown below, 
+where $i=1,\ldots, m$ and $j=1,\ldots,n$ denote the study participant and observation within participant, respectively. We expect measurements within subject to be positively correlated. Therefore, corr$(X_{i,j},X_{i,j'}) = \tau_X >0$ and corr$(\epsilon_{i,j},\epsilon_{i,j'}) = \tau_\epsilon>0$. Finally, $\mbox{Var}(X_{i,j}) = \mbox{Var}(\epsilon_{i,j}) =1$, Using an approach which decomposes the covariates, we are able to come to a power formula with two parts; one part is the correlation between $X_{i,j}$ and $Y_{i,j}$ without accounting for the correlation within subjects, and another part, $\gamma$, is a function of study design parameters. This equation is shown below, 
 \begin{equation} \label{eq:rhoeff}
 \rho^2_{\mbox{eff}} =\frac{\rho^2\gamma}{\rho^2\gamma+(1-\rho^2)}.
 \end{equation}
-\noindent Figure \ref{fig:gamma} shows how $\gamma$ varies as different study design parameters change. There are interesting special cases of this result. For example, when $\tau_x = \tau_\epsilon$, this is equivalent to an independent random sample, and when $\tau_x = 1$ we recover the classical result for longitudinal studies comparing treatment to control group.
+\noindent Figure \ref{fig:gamma} shows how $\gamma$ varies as different study design parameters change. There are interesting special cases of this result. For example, when $\tau_X = \tau_\epsilon$, this is equivalent to an independent random sample, and when $\tau_X= 1$ we recover the classical result for longitudinal studies comparing treatment to control group.
 
 \end{multicols}
 \end{document}
